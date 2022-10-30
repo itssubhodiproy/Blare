@@ -5,10 +5,12 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const User = require("./model/user");
+const Post = require("./model/post");
 const { tokenGenerate } = require("./controller/generateToken");
 const { auth } = require("./controller/auth");
 const { follow, unFollow } = require("./controller/followUnfollow");
 const { userProfile } = require("./controller/userProfile");
+const createPost = require("./controller/post");
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -32,6 +34,7 @@ app.use("/api/authenticate", tokenGenerate);
 app.post("/api/follow/:id", auth, follow);
 app.post("/api/unfollow/:id", auth, unFollow);
 app.get("/api/users", auth, userProfile);
+app.post("/api/posts", auth, createPost);
 
 app.listen(process.env.PORT, () => {
   console.log("Server is running on port 3000");

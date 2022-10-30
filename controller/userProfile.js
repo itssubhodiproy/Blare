@@ -9,7 +9,7 @@ const userProfile = async (req, res) => {
     res.json({
       username: user.username,
       following: followingCount,
-      followers: followersCount,
+      followers: followersCount
     });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
