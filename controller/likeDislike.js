@@ -11,7 +11,7 @@ const likePost = async (req, res) => {
     }
     await Post.findByIdAndUpdate(req.params.id, {
       $addToSet: { likes: req.id },
-    }).then(console.log("User liked the post with id: ", req.params.id));
+    }).then(console.log("You liked the post with id: ", req.params.id));
     res.json({ message: "Post liked" });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });

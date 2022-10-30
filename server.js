@@ -13,6 +13,7 @@ const { userProfile } = require("./controller/userProfile");
 const { createPost } = require("./controller/createPost");
 const { deletePost } = require("./controller/deletePost");
 const { likePost, disLikePost } = require("./controller/likeDislike");
+const {commentPost} = require("./controller/commentPost");
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -51,6 +52,8 @@ app.post("/api/posts", auth, createPost);
 app.delete("/api/posts/:id", auth, deletePost);
 app.post("/api/posts/like/:id", auth, likePost);
 app.post("/api/posts/unlike/:id", auth, disLikePost);
+app.post("/api/posts/comment/:id", auth, commentPost);
+
 
 app.listen(process.env.PORT, () => {
   console.log("Server is running on port 3000");
