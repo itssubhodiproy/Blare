@@ -28,7 +28,7 @@ mongoose
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to the API", Instructions: "Please read the README.md file" });
+  res.json({ message: "Welcome to the API", instructions: "Please read the README.md file" });
 });
 
 // app.get("/allPosts", auth, async (req, res) => {
