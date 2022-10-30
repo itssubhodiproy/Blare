@@ -10,7 +10,8 @@ const { tokenGenerate } = require("./controller/generateToken");
 const { auth } = require("./controller/auth");
 const { follow, unFollow } = require("./controller/followUnfollow");
 const { userProfile } = require("./controller/userProfile");
-const createPost = require("./controller/post");
+const { createPost } = require("./controller/createPost");
+const {deletePost} = require("./controller/deletePost");
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -27,7 +28,18 @@ mongoose
 app.use(express.json());
 
 app.get("/", auth, (req, res) => {
-  res.json({ message: "Hello World" });
+  res.json({ username: req.username, id: req.id });
+});
+
+app.get("/api/posts/all", auth, async (req, res) => {
+  let posts = await Post.find();
+  res.json(posts);
+});
+
+app.get("/allUsers", auth, (req, res) => {
+  User.find({}).then((users) => {
+    res.json(users);
+  });
 });
 
 app.use("/api/authenticate", tokenGenerate);
@@ -35,6 +47,7 @@ app.post("/api/follow/:id", auth, follow);
 app.post("/api/unfollow/:id", auth, unFollow);
 app.get("/api/users", auth, userProfile);
 app.post("/api/posts", auth, createPost);
+app.delete("/api/posts/:id", auth, deletePost);
 
 app.listen(process.env.PORT, () => {
   console.log("Server is running on port 3000");

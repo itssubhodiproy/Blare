@@ -2,7 +2,6 @@ const User = require("../model/user");
 
 const userProfile = async (req, res) => {
   try {
-    // let user = await User.findById(req.id);
     let user = await User.findById(req.id);
     let followingCount = user.following.length;
     let followersCount = user.followers.length;
