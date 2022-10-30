@@ -2,6 +2,9 @@ const User = require("../model/user");
 
 const follow = async (req, res) => {
   try {
+    if (req.params.id === req.id) {
+      return res.status(400).json({ message: "You cannot follow yourself" });
+    }
     let userToFollow = await User.findById(req.params.id);
     if (!userToFollow) {
       return res
@@ -22,6 +25,9 @@ const follow = async (req, res) => {
 
 const unFollow = async (req, res) => {
   try {
+    if (req.params.id === req.id) {
+      return res.status(400).json({ message: "You cannot unfollow yourself" });
+    }
     let userToUnFollow = await User.findById(req.params.id);
     if (!userToUnFollow) {
       return res
