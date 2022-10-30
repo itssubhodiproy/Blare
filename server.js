@@ -8,6 +8,7 @@ const User = require("./model/user");
 const { tokenGenerate } = require("./controller/generateToken");
 const { auth } = require("./controller/auth");
 const { follow, unFollow } = require("./controller/followUnfollow");
+const { userProfile } = require("./controller/userProfile");
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -28,26 +29,9 @@ app.get("/", auth, (req, res) => {
 });
 
 app.use("/api/authenticate", tokenGenerate);
-
 app.post("/api/follow/:id", auth, follow);
 app.post("/api/unfollow/:id", auth, unFollow);
-
-  // //if passed id's user is valid or not
-  // let userToFollow = await User.findById(req.params.id);
-  // if (!userToFollow) {
-  //   return res.status(404).json({ message: `User not found with id ${req.params.id}` });
-  // }
-  // // push the id into the following array of the user
-  // await User.findByIdAndUpdate(req.id, {
-  //   $addToSet: { following: req.params.id },
-  // }).then(console.log("User followed with id: ", req.params.id));
-  // //push the id into the followers array of the user to follow
-  // await User.findByIdAndUpdate(req.params.id, {
-  //   $addToSet: { followers: req.id },
-  // }).then(console.log("User followed with id: ", req.id));
-
-  // res.json({ message: "User followed" });
-
+app.get("/api/users", auth, userProfile);
 
 app.listen(process.env.PORT, () => {
   console.log("Server is running on port 3000");
