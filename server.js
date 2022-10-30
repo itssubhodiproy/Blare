@@ -11,7 +11,8 @@ const { auth } = require("./controller/auth");
 const { follow, unFollow } = require("./controller/followUnfollow");
 const { userProfile } = require("./controller/userProfile");
 const { createPost } = require("./controller/createPost");
-const {deletePost} = require("./controller/deletePost");
+const { deletePost } = require("./controller/deletePost");
+const { likePost, disLikePost } = require("./controller/likeDislike");
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -31,7 +32,7 @@ app.get("/", auth, (req, res) => {
   res.json({ username: req.username, id: req.id });
 });
 
-app.get("/api/posts/all", auth, async (req, res) => {
+app.get("/allPosts", auth, async (req, res) => {
   let posts = await Post.find();
   res.json(posts);
 });
@@ -48,6 +49,8 @@ app.post("/api/unfollow/:id", auth, unFollow);
 app.get("/api/users", auth, userProfile);
 app.post("/api/posts", auth, createPost);
 app.delete("/api/posts/:id", auth, deletePost);
+app.post("/api/posts/like/:id", auth, likePost);
+app.post("/api/posts/unlike/:id", auth, disLikePost);
 
 app.listen(process.env.PORT, () => {
   console.log("Server is running on port 3000");
