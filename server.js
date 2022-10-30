@@ -27,9 +27,9 @@ mongoose
 // Middleware
 app.use(express.json());
 
-// app.get("/", auth, (req, res) => {
-//   res.json({ username: req.username, id: req.id });
-// });
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to the API", Instructions: "Please read the README.md file" });
+});
 
 // app.get("/allPosts", auth, async (req, res) => {
 //   let posts = await Post.find();
