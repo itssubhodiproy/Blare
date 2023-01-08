@@ -1,4 +1,4 @@
-# Social-media-api
+# Blare
 Use endpoints using api tools such as Postman and follow the documentation
 
 pass the auth header as
