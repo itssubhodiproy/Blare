@@ -1,6 +1,25 @@
-# Blare
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com//subh-cs/Blare">
+    <img src="/assets/BlareLogo.png" alt="Logo" width="200">
+  </a>
 
-[![Blare logo](./logo.png)](https://blare.com)
+<h3 align="center">Blare</h3>
+
+  <p align="center">
+    Discover about culture and music
+    <br />
+    <a href="https://github.com/subh-cs/Blare"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://subh-ace-it.herokuapp.com">View Demo</a>
+    ·
+    <a href="https://github.com/subh-cs/Blare/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/subh-cs/Blare/issues">Request Feature</a>
+  </p>
+</div>
 
 Blare is a social media platform for musicians. It allows musicians to create profiles, share and stream music, collaborate with other musicians, share updates and events, and interact with fans.
 
