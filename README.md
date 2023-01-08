@@ -8,5 +8,6 @@ pass the auth header as
 
 Authorization : Bearer {Token}
 
+<img src="/assets/BlareApiEndpoints.png">
 
 __Follow [this](https://docs.google.com/document/d/1Ep2p7Tme-e0sl7AHyN0gcVbAi_ZQPoFk5BMmWfYoHlU/edit?usp=sharing) documentation for functionallities and usecases. Thanks!__
