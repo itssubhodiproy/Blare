@@ -113,3 +113,65 @@ Distributed under the Apache License. See `LICENSE` for more information.
 
 Project Link: [https://github.com/subh-cs/Blare](https://github.com/subh-cs/Blare)
 
+# API Endpoints
+
+## User Authentication
+
+- **POST /api/authenticate**
+    - Perform user authentication and return a JWT token
+    - Input: 
+        - Email
+        - Password
+    - Return:
+        - JWT token
+
+## User Follow/Unfollow
+- **POST /api/follow/{id}**
+    - Authenticated user would follow user with {id}
+- **POST /api/unfollow/{id}**
+    - Authenticated user would unfollow a user with {id}
+
+## User Profile
+- **GET /api/user**
+    - Authenticate the request and return the respective user profile
+    - Return: 
+        - User Name
+        - Number of followers 
+        - Number of followings
+
+## Posts
+- **POST /api/posts/**
+    - Add a new post created by the authenticated user
+    - Input:
+        - Title
+        - Description
+    - Return:
+        - Post-ID
+        - Title
+        - Description
+        - Created Time(UTC)
+- **DELETE /api/posts/{id}**
+    - Delete post with {id} created by the authenticated user
+- **POST /api/like/{id}**
+    - Like the post with {id} by the authenticated user
+- **POST /api/unlike/{id}**
+    - Unlike the post with {id} by the authenticated user
+- **POST /api/comment/{id}**
+    - Add comment for post with {id} by the authenticated user
+    - Input:
+        - Comment
+    - Return:
+        - Comment-ID
+- **GET /api/posts/{id}**
+    - Return a single post with {id} populated with its number of likes and comments
+- **GET /api/all_posts**
+    - Return all posts created by authenticated user sorted by post time
+    - Return:
+        - id: ID of the post
+        - title: Title of the post
+        - desc: Description of the post
+        - created_at: Date and time when the post was created
+        - comments: Array of comments, for the particular post
+        - likes: Number of likes for the particular post
+
+
