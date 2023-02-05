@@ -12,7 +12,7 @@ const { likePost, disLikePost } = require("./controller/likeDislike");
 const { commentPost } = require("./controller/commentPost");
 const { getSinglePost } = require("./controller/getSinglePost");
 const { getAllPosts } = require("./controller/getAllPosts");
-// Connect to MongoDB
+// Connect to MongoDB database
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
